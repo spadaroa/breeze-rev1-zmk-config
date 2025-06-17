@@ -9,6 +9,17 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    behaviors {
+        hold_tap: hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -22,11 +33,11 @@
             //                                     |   NUMPAD   |     LALT    |    LCMD    |   SPACE    |  |   ENTER   |   FUNCTION  |  MACOS APP |  MACOS LANG |
 
             bindings = <
-&kp ESC    &kp N1        &kp N2        &kp N3     &kp N4   &kp N5         &kp N6           &kp N7  &kp N8     &kp N9   &kp N0    &kp EQUAL      &kp INSERT  &kp HOME  &kp PAGE_UP
-&kp TAB    &kp Q         &kp W         &kp E      &kp R    &kp T          &kp Y            &kp U   &kp I      &kp O    &kp P     &kp MINUS      &kp DELETE  &kp END   &kp PAGE_DOWN
-&kp CLCK   &kp A         &kp S         &kp D      &kp F    &kp G          &kp H            &kp J   &kp K      &kp L    &kp SEMI  &kp SQT        &kp UP
-&kp LSHFT  &kp Z         &kp X         &kp C      &kp V    &kp B          &kp N            &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp BACKSPACE  &kp LEFT    &kp DOWN  &kp RIGHT
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &kp SPACE  &kp RET  &kp RIGHT_ALT  &kp RIGHT_SHIFT  &mo 1
+&kp ESC    &hold_tap LS(N1) N1  &hold_tap LS(N2) N2  &hold_tap LS(N3) N3  &hold_tap LS(N4) N4  &hold_tap LS(N5) N5  &hold_tap LS(N6) N6  &hold_tap LS(N7) N7  &hold_tap LS(N8) N8        &hold_tap LS(N9) N9    &hold_tap LS(N0) N0           &hold_tap LS(EQUAL) EQUAL  &kp INSERT  &kp HOME  &kp PAGE_UP
+&kp TAB    &hold_tap LS(Q) Q    &hold_tap LS(W) W    &hold_tap LS(E) E    &hold_tap LS(R) R    &hold_tap LS(T) T    &hold_tap LS(Y) Y    &hold_tap LS(U) U    &hold_tap LS(I) I          &hold_tap LS(O) O      &hold_tap LS(P) P             &hold_tap LS(MINUS) MINUS  &kp DELETE  &kp END   &kp PAGE_DOWN
+&kp CLCK   &hold_tap LS(A) A    &hold_tap LS(S) S    &hold_tap LS(D) D    &hold_tap LS(F) F    &hold_tap LS(G) G    &hold_tap LS(H) H    &hold_tap LS(J) J    &hold_tap LS(K) K          &hold_tap LS(L) L      &hold_tap LS(SEMI) SEMICOLON  &hold_tap LS(SQT) SQT      &kp UP
+&kp LSHFT  &hold_tap LS(Z) Z    &hold_tap LS(X) X    &hold_tap LS(C) C    &hold_tap LS(V) V    &hold_tap LS(B) B    &hold_tap LS(N) N    &hold_tap LS(M) M    &hold_tap LS(COMMA) COMMA  &hold_tap LS(DOT) DOT  &hold_tap LS(FSLH) FSLH       &kp BACKSPACE              &kp LEFT    &kp DOWN  &kp RIGHT
+&kp LCTRL  &kp LEFT_WIN         &kp LEFT_ALT         &kp SPACE            &kp RET              &kp RIGHT_ALT        &kp RIGHT_SHIFT      &mo 1
             >;
         };
 
